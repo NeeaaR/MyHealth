@@ -10,6 +10,7 @@ import FindDoctors from './components/FindDoctors/FindDoctors'
 import FindPharmacy from './components/FindPharmacy/FindPharmacy'
 import Profil from './components/Profil/index'
 import Doctors from './components/Doctors'
+import Users from './components/Users'
 
 const Router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const Router = createBrowserRouter([
   {
     path: "/profil/doctor",
     element: <Doctors/>
+  },
+  {
+    path: "/users",
+    element: <Users/>
   }
 ])
 

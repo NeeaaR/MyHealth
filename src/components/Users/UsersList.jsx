@@ -1,4 +1,4 @@
-import { Input } from "@mui/material";
+import { Button, Container, Input, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import Loading from "../Loading";
@@ -34,15 +34,25 @@ export default function UsersList() {
   }
 
   return (
-    <div>
-      <Input id="search" defaultValue="" onChange={handleSearch}>
+    <Container>
+    <Box sx={{
+      marginY: "100px",
+    }}>
+    <TextField id="outlined-basic" label="Outlined" defaultValue="" onChange={handleSearch}>
         Rechercher
-      </Input>
-
+      </TextField>
+    </Box>
+    <Box sx={{ 
+      display: 'flex',
+      flexDirection: 'row',
+      flexWrap: "wrap",
+      justifyContent: "center"
+     }}>
         {filteredUsers.map((user) => (
           <Cards key={user.id} user={user} />     
         ))}
-
-    </div>
+    </Box>
+    <Button sx={{ marginY: '25px' }}>UPDATE</Button>
+    </Container>
   );
 }

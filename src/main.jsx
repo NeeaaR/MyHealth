@@ -12,48 +12,48 @@ import Profil from './components/Profil/index'
 import Doctors from './components/Doctors'
 import Users from './components/Users'
 
-const Router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/login",
-    element: <Login />
-  },
-  {
-    path: "/register",
-    element: <Register />
-  },
-  {
-    path: "/drawer",
-    element: <MiniDrawer />
-  },
-  {
-    path: "/find/doctors",
-    element: <FindDoctors/>
-  },
-  {
-    path: "/find/pharmacy",
-    element: <FindPharmacy/>
-  },
-  {
-    path: "/profil/user",
-    element: <Profil/>
-  },
-  {
-    path: "/profil/doctor",
-    element: <Doctors/>
-  },
-  {
-    path: "/users",
-    element: <Users/>
-  }
-])
+// const Router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//     errorElement: <ErrorPage />,
+//   },
+//   {
+//     path: "/login",
+//     element: <Login />
+//   },
+//   {
+//     path: "/register",
+//     element: <Register />
+//   },
+//   {
+//     path: "/drawer",
+//     element: <MiniDrawer />
+//   },
+//   {
+//     path: "/find/doctors",
+//     element: <FindDoctors/>
+//   },
+//   {
+//     path: "/find/pharmacy",
+//     element: <FindPharmacy/>
+//   },
+//   {
+//     path: "/profil/user",
+//     element: <Profil/>
+//   },
+//   {
+//     path: "/profil/doctor",
+//     element: <Doctors/>
+//   },
+//   {
+//     path: "/users",
+//     element: <Users/>
+//   }
+// ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={Router} />
+    <App />
   </React.StrictMode>,
 )

@@ -40,7 +40,7 @@ const theme = createTheme({
 }
 );
 
-const Register = () => {
+const RegisterDoctor = () => {
 
   const [formData, setFormData] = useState({
     username: "",
@@ -49,6 +49,7 @@ const Register = () => {
     password2: "",
     first_name: "",
     last_name : "",
+    speciality: "",
     gender: "",
     age: "",
     health_card_number: "",
@@ -57,7 +58,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
-  const { username, password, email, first_name, last_name, gender, age, health_card_number } = formData;
+  const { username, password, email, first_name, last_name, speciality, gender, age, health_card_number } = formData;
 
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -68,7 +69,7 @@ const Register = () => {
     if (password !== formData.password2){
       dispatch(setAlert("Passwords do not match", "danger"));
     } else {
-      dispatch(register({ username, email, password, first_name, last_name, gender, age, health_card_number }))
+      dispatch(register_doctor({ username, email, password, first_name, last_name, speciality, gender, age, health_card_number }))
     }
   }
 
@@ -92,7 +93,7 @@ const Register = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Inscription
+            Inscription docteur
           </Typography>
           <Box component="form" onSubmit={onSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -165,6 +166,18 @@ const Register = () => {
                   autoComplete="new-password2"
                 />
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="speciality"
+                  label="Spécialité"
+                  type="text"
+                  id="speciality"
+                  onChange={onChange}
+                  autoComplete="speciality"
+                />
+              </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="gender"
@@ -229,4 +242,4 @@ const Register = () => {
   );
 }
 
-export default Register
+export default RegisterDoctor;

@@ -15,6 +15,9 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../actions/auth';
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -57,6 +60,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+
+  const auth = useSelector(state => state.auth);
+  console.log(auth)
+  const dispatch = useDispatch();
+
+  const { isAuthenticated, loading } = auth ;
+
+  const onLogout = e => {
+    e.preventDefault();
+    dispatch(logout());
+  }
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -81,6 +96,28 @@ export default function Navbar() {
   };
 
   const menuId = 'primary-search-account-menu';
+
+  const authLinks = (
+    <Menu
+    anchorEl={anchorEl}
+    anchorOrigin={{
+      vertical: 'top',
+      horizontal: 'right',
+    }}
+    id={menuId}
+    keepMounted
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'right',
+    }}
+    open={isMenuOpen}
+    onClose={handleMenuClose}
+  >
+    <MenuItem onClick={handleMenuClose}><Link to={`/profil/user/1`}>Mon Profil</Link></MenuItem>
+    <MenuItem onClick={handleMenuClose}><a href="/logout" onClick={onLogout}>Déconnexion</a></MenuItem>
+  </Menu>
+  );
+
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -97,7 +134,7 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profil</MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link component="div" to="/login">Se connecter</Link></MenuItem>
       <MenuItem onClick={handleMenuClose}>Paramètres</MenuItem>
     </Menu>
   );
@@ -149,7 +186,9 @@ export default function Navbar() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profil</p>
+        {!loading && (
+        <p>Mon Profil</p>
+        )}
       </MenuItem>
     </Menu>
   );
@@ -227,7 +266,8 @@ export default function Navbar() {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {renderMenu}
+      
+      {isAuthenticated ? authLinks : renderMenu }
     </Box>
   );
 }

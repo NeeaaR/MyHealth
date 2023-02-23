@@ -5,21 +5,27 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+import Links from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Register from './Register';
+import { useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { login } from '../../actions/auth';
+import { Route, redirect, Link, Navigate } from 'react-router-dom';
+import Profil from '../Profil';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      <Links color="inherit" href="https://mui.com/">
         MyHealth
-      </Link>{' '}
+      </Links>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -28,15 +34,29 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+const Login = () => {
+  const [formData, setFormData] = useState({
+    email : "",
+    password : ""
+  });
+
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+
+  const { email, password } = formData;
+
+  const onChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value})
   };
+
+  const onSubmit = async e => { 
+    e.preventDefault();
+    dispatch(login(email, password))
+  }
+
+  if (isAuthenticated) {
+    return <Navigate replace to='/'/>
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -56,7 +76,7 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Se connecter
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={onSubmit} sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -66,6 +86,7 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={onChange}
             />
             <TextField
               margin="normal"
@@ -76,6 +97,7 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={onChange}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -91,14 +113,14 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Links href="#" variant="body2">
                   Mot de passe oublié?
-                </Link>
+                </Links>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Links href="/register" variant="body2">
                   {"Vous n'avez pas de compte? Inscrivez-vous"}
-                </Link>
+                </Links>
               </Grid>
             </Grid>
           </Box>
@@ -108,3 +130,5 @@ export default function SignIn() {
     </ThemeProvider>
   );
 }
+
+export default Login

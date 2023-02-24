@@ -16,7 +16,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { register, register_doctor } from '../../actions/auth';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -73,9 +73,9 @@ const Register = () => {
   }
 
   if (isAuthenticated) {
-    return <Link to="/"/> 
+    return <Navigate replace to='/'/>
   }
-
+  
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs" bgcolor="#001E3C">

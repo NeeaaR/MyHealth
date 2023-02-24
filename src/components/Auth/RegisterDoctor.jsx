@@ -74,7 +74,7 @@ const RegisterDoctor = () => {
   }
 
   if (isAuthenticated) {
-    return <Link to="/"/> 
+    return <Navigate replace to='/'/>
   }
 
   return (

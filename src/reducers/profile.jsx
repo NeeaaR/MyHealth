@@ -1,11 +1,9 @@
 import {
     GET_PROFILE,
-    GET_REPOS,
     GET_PROFILES,
     UPDATE_PROFILE,
     PROFILE_ERROR,
     CLEAR_PROFILE,
-    GITHUB_ERROR
   } from "../actions/types";
   
   const initialState = {

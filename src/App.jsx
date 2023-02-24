@@ -20,24 +20,6 @@ import setAuthToken from "./components/utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 import RegisterDoctor from "./components/Auth/RegisterDoctor";
 
-// function App() {
-//   useEffect(() => {
-//     Aos.init();
-//   }, []);
-//   return (
-//     <div>
-//       <Router>
-//         <Navbar />
-//         {/* <div data-aos="fade-left">
-//       <img src="https://fakeimg.pl/350x200/?text=World&font=lobster"></img>
-//     </div> */}
-//         <Header />  
-//         {/* <PrivateRoute component={<Profil/>} path="/profil/user" exact /> */}
-//       </Router>
-//     </div>
-//   );
-// }
-
 const history = createBrowserHistory();
 
 if (localStorage.token) {
@@ -59,7 +41,6 @@ useEffect(() => {
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
-            <Route element={<Profil/>} path="/profil/user/:id"/>
             <Route element={<Home/>} path="/" exact/>
             <Route element={<Login/>} path="/login"/>
             <Route element={<Register/>} path="/register"/>

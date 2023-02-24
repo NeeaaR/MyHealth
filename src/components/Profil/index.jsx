@@ -6,20 +6,25 @@ import Navbar from "../Navbar"
 import User from "./User"
 import UserHeader from "./UserHeader"
 
-const Profil = () => {
-    const { user } = useSelector(state => state.auth)
+const Profil = props => {
+    const {
+        profile: { profile, loading },
+        auth
+    } = useSelector(state => state);
 
-    const { test } = useSelector(state => state.auth)
+    const dispatch = useDispatch();
 
-    console.log(user)
+    useEffect(() => {
+        dispatch(getProfileById(props.match.params.id));
+    }, [dispatch, props.match.params.id]);
 
     return(
         <div>
             <Navbar/>
             <Box sx={{ backgroundColor: "#032b53", marginBottom: 15 }}>
-                <UserHeader user={user}/>
+                <UserHeader user={profile}/>
             </Box>
-            <User user={user}/>
+            <User user={profile}/>
         </div>
     )
 }

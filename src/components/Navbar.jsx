@@ -97,6 +97,9 @@ export default function Navbar() {
 
   const menuId = 'primary-search-account-menu';
 
+  const userId = auth.user?.id ?? "default_user_id";
+  
+
   const authLinks = (
     <Menu
     anchorEl={anchorEl}
@@ -113,7 +116,7 @@ export default function Navbar() {
     open={isMenuOpen}
     onClose={handleMenuClose}
   >
-    <MenuItem onClick={handleMenuClose}><Link to={`/profil/user/1`}>Mon Profil</Link></MenuItem>
+    <MenuItem onClick={handleMenuClose}><Link to={`/profil/${userId}`}>Mon Profil</Link></MenuItem>
     <MenuItem onClick={handleMenuClose}><a href="/logout" onClick={onLogout}>Déconnexion</a></MenuItem>
   </Menu>
   );

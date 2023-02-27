@@ -18,6 +18,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { login } from '../../actions/auth';
 import { Route, redirect, Link, Navigate } from 'react-router-dom';
 import Profil from '../Profil';
+import Alert from '../../layout/Alert';
 
 function Copyright(props) {
   return (
@@ -127,6 +128,7 @@ const Login = () => {
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
+      <Alert/>
     </ThemeProvider>
   );
 }

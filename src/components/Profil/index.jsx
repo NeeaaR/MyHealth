@@ -1,12 +1,15 @@
 import { Box } from "@mui/system"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
 import { getProfileById } from "../../actions/profile"
 import Navbar from "../Navbar"
 import User from "./User"
 import UserHeader from "./UserHeader"
 
-const Profil = props => {
+const Profil = () => {
+
+    const { id } = useParams();
     const {
         profile: { profile, loading },
         auth
@@ -15,9 +18,12 @@ const Profil = props => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getProfileById(props.match.params.id));
-    }, [dispatch, props.match.params.id]);
-
+        console.log(dispatch(getProfileById(id)));
+        dispatch(getProfileById(id));
+    }, [dispatch, id]);
+    if (loading || profile === null) {
+        return <h1>Loading...</h1>
+    }
     return(
         <div>
             <Navbar/>

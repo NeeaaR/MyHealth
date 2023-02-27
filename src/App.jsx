@@ -39,15 +39,14 @@ useEffect(() => {
     // <Router history={history}>
     <div className="App">
       <Provider store={store}>
-        <BrowserRouter>
           <Routes>
             <Route element={<Home/>} path="/" exact/>
             <Route element={<Login/>} path="/login"/>
             <Route element={<Register/>} path="/register"/>
             <Route element={<RegisterDoctor/>} path="/register/doctor"/>
+            <Route element={<Profil/>} path="/profil/:id"/>
             <Route element={<ErrorPage/>} path="*"/>
           </Routes>
-      </BrowserRouter>
       </Provider>
     </div>
     // </Router>

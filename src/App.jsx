@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import "./css/App.css";
-import Navbar from "./components/Navbar";
-import Header from "./components/HomePage/Header";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import Main from "./components/HomePage/Main";
 import { BrowserRouter, Route, Router, RouterProvider, Routes } from "react-router-dom";
 import PrivateRoute from "./components/utils/PrivateRoute";
 import Profil from "./components/Profil";
@@ -19,6 +16,10 @@ import store from "./store";
 import setAuthToken from "./components/utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 import RegisterDoctor from "./components/Auth/RegisterDoctor";
+import APITEST from "./components/APITEST";
+import Users from "./components/Users";
+import FindDoctors from "./components/FindDoctors/FindDoctors";
+import FindPharmacy from "./components/FindPharmacy/FindPharmacy";
 
 const history = createBrowserHistory();
 
@@ -45,6 +46,11 @@ useEffect(() => {
             <Route element={<Register/>} path="/register"/>
             <Route element={<RegisterDoctor/>} path="/register/doctor"/>
             <Route element={<Profil/>} path="/profil/:id"/>
+            <Route element={<Doctors/>} path="/profil/doctor/:id"/>
+            <Route element={<APITEST/>} path="/api/:id"/>
+            <Route element={<Users/>} path="/users/"/>
+            <Route element={<FindDoctors/>} path="/find/doctors"/>
+            <Route element={<FindPharmacy/>} path="/find/phamarcy"/>
             <Route element={<ErrorPage/>} path="*"/>
           </Routes>
       </Provider>

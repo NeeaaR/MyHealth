@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Time from "./Time";
 
-export default function DayTime() {
+export default function DayTime({slots}) {
   return (
     <Box sx={{ color: "white" }}>
       <Typography

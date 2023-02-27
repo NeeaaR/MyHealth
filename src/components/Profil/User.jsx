@@ -2,7 +2,7 @@ import { TextField, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import Cards from "../FindDoctors/Card";
 
-export default function User({user}) {
+export default function User({profile}) {
   return (
     <Container
       sx={{
@@ -28,7 +28,7 @@ export default function User({user}) {
         noValidate
         autoComplete="off"
       >
-        <TextField label="N° Vital" color="error" value={user.health_card_number} focused />
+        <TextField label="N° Vital" color="error" value={profile.health_card_number} focused />
       </Box>
       <Box>
         <Typography
@@ -43,7 +43,6 @@ export default function User({user}) {
           MES RENDEZ-VOUS
         </Typography>
       </Box>
-      <Cards />
     </Container>
   );
 }

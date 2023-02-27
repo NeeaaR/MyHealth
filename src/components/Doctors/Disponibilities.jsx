@@ -3,7 +3,7 @@ import { Box, Container } from "@mui/system";
 import DayTime from "./DayTime";
 import Time from "./Time";
 
-export default function Disponibilities() {
+export default function Disponibilities({slots}) {
   return (
     <Container sx={{ color: "white", marginY: 3}}>
       <Box>
@@ -18,8 +18,7 @@ export default function Disponibilities() {
         >
           Mes disponibilités
         </Typography>
-        <DayTime/>
-        <Button variant="contained" color="success" sx={{ marginTop: 10}}>+</Button>
+        <DayTime slots={slots}/>
       </Box>
     </Container>
   );

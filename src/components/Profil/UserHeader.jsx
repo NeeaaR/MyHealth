@@ -2,7 +2,7 @@ import { Avatar, Box, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 
 
-export default function UserHeader({user}) {
+export default function UserHeader({profile}) {
   return (
     <Container
       sx={{
@@ -44,7 +44,7 @@ export default function UserHeader({user}) {
                 letterSpacing: 3,
               }}
             >
-              {user.first_name}
+              {profile.first_name}
             </Typography>
             <Typography
               component="div"
@@ -55,7 +55,7 @@ export default function UserHeader({user}) {
                 letterSpacing: 5,
               }}
             >
-              Morin
+              {profile.last_name}
             </Typography>
           </Box>
         </Grid>
@@ -70,7 +70,7 @@ export default function UserHeader({user}) {
               letterSpacing: 3,
             }}
           >
-            Utilisateur depuis le {user.created_at}
+            Utilisateur depuis le {profile.created_at}
           </Typography>
         </Grid>
       </Grid>

@@ -2,7 +2,7 @@ import React from "react";
 import { Avatar, Box, Grid, Rating, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 
-export default function DoctorHeader() {
+export default function DoctorHeader({user}) {
   const [value, setValue] = React.useState(2);
   return (
     <Container
@@ -46,7 +46,7 @@ export default function DoctorHeader() {
                 letterSpacing: 3,
               }}
             >
-              Alexis
+              {user.first_name}
             </Typography>
             <Typography
               component="div"

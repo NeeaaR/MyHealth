@@ -11,7 +11,7 @@ import {
 //get availableslot
 export const getSlot = () => async dispatch => {
     try {
-        const res = await axios.get(`http://localhost:8000/api/available/${id}`)
+        const res = await axios.get(`http://localhost:8000/api/availables/${id}`)
 
         dispatch({ type: GET_AVAILABLESLOT, payload: res.data });
     }
@@ -23,7 +23,7 @@ export const getSlot = () => async dispatch => {
 //get all availableslots
 export const getSlots = () => async dispatch => {
     try {
-        const res = await axios.get("http://localhost:8000/api/available/")
+        const res = await axios.get("http://localhost:8000/api/availables/")
 
         dispatch({ type: GET_AVAILABLESLOTS, payload: res.data });
     }
@@ -41,7 +41,7 @@ export const addAvailableSlot = formData => async dispatch => {
     };
 
     try {
-        const res = await axios.post("", formData, config);
+        const res = await axios.post("http://localhost:8000/api/availables/", formData, config);
 
         dispatch({ type: ADD_AVAILABLESLOT, payload: res.data });
 
@@ -54,7 +54,7 @@ export const addAvailableSlot = formData => async dispatch => {
 //delete availableslot
 export const deleteAvailableSlot = id => async dispatch => {
     try {
-        await axios.delete(`http://localhost:8000/api/available/${id}`);
+        await axios.delete(`http://localhost:8000/api/availables/${id}`);
 
         dispatch({ type: DELETE_AVAILABLESLOT, payload: id });
 
@@ -64,10 +64,10 @@ export const deleteAvailableSlot = id => async dispatch => {
     }
 }
 
-//Get all availableslots for doctors
-export const getDoctorSlots = () => async dispatch => {
+//Get all availableslots for doctor
+export const getAvailableSlots = () => async dispatch => {
     try {
-        const res = await axios.get("http://localhost:8000/api/available/doctor")
+        const res = await axios.get("http://localhost:8000/api/availables/")
 
         dispatch({ type: GET_AVAILABLESLOTS, payload: res.data });
     }

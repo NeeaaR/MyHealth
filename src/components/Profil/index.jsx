@@ -2,14 +2,17 @@ import { Box } from "@mui/system"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import { getProfileById } from "../../actions/profile"
+import { getUserById } from "../../actions/profile"
 import Navbar from "../Navbar"
 import User from "./User"
+import UserAvailability from "./UserAvailability"
 import UserHeader from "./UserHeader"
 
 const Profil = () => {
 
+    //get id from url
     const { id } = useParams();
+
     const {
         profile: { profile, loading },
         auth
@@ -18,9 +21,9 @@ const Profil = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(dispatch(getProfileById(id)));
-        dispatch(getProfileById(id));
+        dispatch(getUserById(id));
     }, [dispatch, id]);
+    
     if (loading || profile === null) {
         return <h1>Loading...</h1>
     }
@@ -28,10 +31,11 @@ const Profil = () => {
         <div>
             <Navbar/>
             <Box sx={{ backgroundColor: "#032b53", marginBottom: 15 }}>
-                <UserHeader user={profile}/>
+                <UserHeader profile={profile.profile}/>
             </Box>
-            <User user={profile}/>
-        </div>
+            <User profile={profile.profile}/>
+            <UserAvailability slots={profile.available_slots}/>
+        </div>  
     )
 }
 

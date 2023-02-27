@@ -62,7 +62,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Navbar() {
 
   const auth = useSelector(state => state.auth);
-  console.log(auth)
   const dispatch = useDispatch();
 
   const { isAuthenticated, loading } = auth ;

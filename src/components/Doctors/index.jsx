@@ -1,7 +1,6 @@
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Navbar from "../Navbar";
-import Disponibilities from "./Disponibilities";
 import DoctorHeader from "./DoctorHeader";
 import Stats from "./Stats";
 import { useEffect } from "react";
@@ -10,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { getUserById } from "../../actions/profile";
 import isLoading from "../Loading";
 import AddSlot from "../DoctorsForm/AddSlot";
+import DayTime from "./DayTime";
 
 export default function Doctors() {
 
@@ -22,6 +22,13 @@ export default function Doctors() {
   } = useSelector(state => state);
 
   const dispatch = useDispatch();
+  const { user } = auth;
+
+  const AddDisponibilities = () => {
+    if (user.id == id) {
+      return <AddSlot user={user} />;
+    }
+  };
 
   useEffect(() => {
       dispatch(getUserById(id));
@@ -38,9 +45,22 @@ export default function Doctors() {
       </Box>
       <Container>
         <Stats/>
+        <Typography
+          component="div"
+          variant="h4"
+          sx={{
+            fontFamily: ["Plus Jakarta Sans"],
+            fontWeight: 800,
+            color: 'white',
+            marginBottom: 5,
+          }}
+        >
+          Mes disponibilités
+        </Typography>
+        <DayTime slots={profile}/>
+      {AddDisponibilities()}
+
       </Container>
-      <Disponibilities slots={profile.available_slots} />
-      <AddSlot/>
     </div>
   );
 }

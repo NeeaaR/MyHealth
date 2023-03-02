@@ -19,11 +19,11 @@ const Profil = () => {
     } = useSelector(state => state);
 
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(getUserById(id));
     }, [dispatch, id]);
-    
+    const { user } = auth;
+    console.log(user)
     if (loading || profile === null) {
         return <h1>Loading...</h1>
     }

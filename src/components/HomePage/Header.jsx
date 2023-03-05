@@ -32,9 +32,9 @@ export default function Header(){
             // <img src="public\images\header_image2.jpg" alt="not found" />
 
             <ThemeProvider theme={theme}>
-            <Grid container component="main" sx={{ height: '90vh', }}>
+            <Grid container component="main" sx={{ height: '90vh' }}>
               <CssBaseline />
-              <Grid item xs={12} sm={8} md={5} elevation={6} square>
+              <Grid item xs={12} sm={8} md={5} elevation={6}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -48,7 +48,7 @@ export default function Header(){
               </Grid>
               <Grid
                 item
-                xs={false}
+                xs={12}
                 sm={4}
                 md={7}
                 sx={{

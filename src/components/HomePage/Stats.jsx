@@ -15,6 +15,13 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(20),
   textAlign: 'center',
   color: theme.palette.text.secondary,
+  height: '65vh',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
+
 }));
 
 export default function Stats() {
@@ -27,9 +34,10 @@ export default function Stats() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
         
     }}>
-      <Grid container spacing={25} sx={{
+      <Grid container spacing={20} sx={{
 
       }}>
         <Grid item xs={4}>
@@ -44,6 +52,8 @@ export default function Stats() {
               </Typography>
             <Typography component="div" sx={{
                 fontSize: 25,
+                fontWeight: 600,
+
             }}>Nous font confiance</Typography>
           </Item>
         </Grid>
@@ -57,7 +67,8 @@ export default function Stats() {
             }}>250K+</Typography>
             <Typography component="div" sx={{
                 fontSize: 25,
-            }}>Comptes crées sur le site</Typography>
+                fontWeight: 600,
+            }}>Comptes crées</Typography>
           </Item>
         </Grid>
         <Grid item xs={4}>
@@ -70,6 +81,7 @@ export default function Stats() {
             }}>153K+</Typography>
             <Typography component="div" sx={{
                 fontSize: 25,
+                fontWeight: 600,
                 width: "200px"
             }}>Médecins nous ont rejoins</Typography>
           </Item>

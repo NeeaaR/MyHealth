@@ -5,7 +5,8 @@ import {
     GET_APPOINTMENTS,
     APPOINTMENT_ERROR,
     ADD_APPOINTMENT,
-    DELETE_APPOINTMENT
+    DELETE_APPOINTMENT,
+    GET_RESERVEDSLOTSID
 } from "./types";
 
 
@@ -50,7 +51,7 @@ export const addAppointment = formData => async dispatch => {
     } catch (err) {
         dispatch({ type: APPOINTMENT_ERROR, payload: { msg: err.response.statusText, status: err.response.status } }); 
     }
-}
+}    
 
 //delete appointment
 export const deleteAppointment = id => async dispatch => {
@@ -63,4 +64,17 @@ export const deleteAppointment = id => async dispatch => {
     } catch (err) {
         dispatch({ type: APPOINTMENT_ERROR, payload: { msg: err.response.statusText, status: err.response.status } }); 
     }
+}
+
+
+//reservedslotIds
+export const getReservedSlotIds = id => async dispatch => {
+    try {
+        const res = await axios.get(`http://localhost:8000/api/doctors/${id}/reserved-slots/`)
+
+        dispatch({ type: GET_RESERVEDSLOTSID, payload: res.data });
+    }
+     catch (err) {
+        dispatch({ type: RESERVEDSLOT_ERROR, payload: { msg: err.response.statusText, status: err.response.status } }); 
+}
 }

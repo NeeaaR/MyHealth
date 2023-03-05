@@ -20,6 +20,7 @@ import APITEST from "./components/APITEST";
 import Users from "./components/Users";
 import FindDoctors from "./components/FindDoctors/FindDoctors";
 import FindPharmacy from "./components/FindPharmacy/FindPharmacy";
+import Articles from "./components/Articles/Articles";
 
 const history = createBrowserHistory();
 
@@ -50,7 +51,8 @@ useEffect(() => {
             <Route element={<APITEST/>} path="/api/:id"/>
             <Route element={<Users/>} path="/users/"/>
             <Route element={<FindDoctors/>} path="/find/doctors"/>
-            <Route element={<FindPharmacy/>} path="/find/phamarcy"/>
+            <Route element={<FindPharmacy/>} path="/find/pharmacy"/>
+            <Route element={<Articles/>} path="/article/:id"/>
             <Route element={<ErrorPage/>} path="*"/>
           </Routes>
       </Provider>

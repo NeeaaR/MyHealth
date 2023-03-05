@@ -4,6 +4,7 @@ import {
     ADD_APPOINTMENT,
     DELETE_APPOINTMENT,
     APPOINTMENT_ERROR,
+    GET_RESERVEDSLOTSID
 } from "../actions/types";
 
 const initialState = {
@@ -21,6 +22,8 @@ export default function(state = initialState, action){
             return { ...state, appointments: payload, loading: false};
         case GET_APPOINTMENT:
             return { ...state, appointment: payload, loading: false};
+        case GET_RESERVEDSLOTSID:
+            return { ...state, appointments: payload, loading: false};
         case ADD_APPOINTMENT:
             return { ...state, appointments: [payload, ...state.appointments], loading: false};
         case APPOINTMENT_ERROR:

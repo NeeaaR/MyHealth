@@ -11,7 +11,6 @@ export default function Main() {
       </div>
       <div data-aos="fade-down">
       <Stats/>
-      <Footer/>
       </div>
     </div>
   )

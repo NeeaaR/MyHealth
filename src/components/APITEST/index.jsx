@@ -29,5 +29,6 @@ export default function APITEST() {
         <div>
         <h1>APITEST</h1>
         </div>
-    );
-    }
+    )
+}
+

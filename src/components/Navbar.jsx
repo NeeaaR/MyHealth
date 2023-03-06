@@ -263,7 +263,7 @@ export default function Navbar() {
             }}
           >
           <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-            MyHealth
+              <img src="/images/logo/logo.png" alt="Logo" style={{ maxWidth: '80px' }} />
           </Link>
           </Typography>
           <Box sx={{ flexGrow: 1 }} />

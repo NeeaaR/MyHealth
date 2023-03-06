@@ -53,7 +53,7 @@ export default function Stats() {
             <Typography component="div" sx={{
                 fontSize: 25,
                 fontWeight: 600,
-
+                fontFamily: ['Plus Jakarta Sans'],
             }}>Nous font confiance</Typography>
           </Item>
         </Grid>
@@ -68,6 +68,7 @@ export default function Stats() {
             <Typography component="div" sx={{
                 fontSize: 25,
                 fontWeight: 600,
+                fontFamily: ['Plus Jakarta Sans'],
             }}>Comptes crées</Typography>
           </Item>
         </Grid>
@@ -77,12 +78,14 @@ export default function Stats() {
                 fontSize: 75,
                 fontWeight: 800,
                 // fontFamily: ['Plus Jakarta Sans'],
-                color: '#5090D3'
+                color: '#5090D3',
+                letterSpacing: 3
             }}>153K+</Typography>
             <Typography component="div" sx={{
                 fontSize: 25,
                 fontWeight: 600,
-                width: "200px"
+                width: "200px",
+                fontFamily: ['Plus Jakarta Sans'],
             }}>Médecins nous ont rejoins</Typography>
           </Item>
         </Grid>

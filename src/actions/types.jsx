@@ -40,4 +40,7 @@ export const ARTICLE_ERROR = "ARTICLE_ERROR";
 export const UPDATE_ARTICLES = "UPDATE_ARTICLELIKES";
 export const DELETE_ARTICLE = "DELETE_ARTICLE";
 export const ADD_ARTICLE = "ADD_ARTICLE";
+export const GET_DOCTOR = "GET_DOCTOR";
+export const GET_DOCTORS = "GET_DOCTORS";
+export const DOCTOR_ERROR = "DOCTOR_ERROR";
 

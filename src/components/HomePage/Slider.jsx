@@ -14,21 +14,21 @@ const reviews = [
     name: "John Doe",
     avatar: "https://i.pravatar.cc/100?img=1",
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et lectus at massa euismod cursus ac sed est.",
+      "J'aime beaucoup ce site, il est très bien fait et les médecins sont très compétents.",
     rating: 4,
   },
   {
     name: "Jane Smith",
     avatar: "https://i.pravatar.cc/100?img=2",
     comment:
-      "Nulla facilisi. Pellentesque vel mi id ipsum facilisis pretium. Sed nec diam sit amet lacus elementum euismod.",
+      "Incroyable ! J'ai trouvé un médecin en 5 minutes et j'ai pu prendre rendez-vous immédiatement.",
     rating: 5,
   },
   {
     name: "Bob Johnson",
     avatar: "https://i.pravatar.cc/100?img=3",
     comment:
-      "Suspendisse euismod, metus auctor consectetur varius, metus ex tristique est, ut bibendum lorem quam eget nisl.",
+      "Dommage que ce site n'existe pas depuis plus longtemps, j'aurais pu éviter de nombreuses visites chez le médecin.",
     rating: 3,
   },
 ];

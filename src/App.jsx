@@ -21,6 +21,7 @@ import Users from "./components/Users";
 import FindDoctors from "./components/FindDoctors/FindDoctors";
 import FindPharmacy from "./components/FindPharmacy/FindPharmacy";
 import Articles from "./components/Articles/Articles";
+import Dashboard from "./layout/dashboard";
 
 const history = createBrowserHistory();
 
@@ -53,6 +54,7 @@ useEffect(() => {
             <Route element={<FindDoctors/>} path="/find/doctors"/>
             <Route element={<FindPharmacy/>} path="/find/pharmacy"/>
             <Route element={<Articles/>} path="/article/:id"/>
+            <Route element={<Dashboard/>} path="/dashboard"/>
             <Route element={<ErrorPage/>} path="*"/>
           </Routes>
       </Provider>

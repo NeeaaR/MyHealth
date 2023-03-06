@@ -51,7 +51,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchBar() {
+export default function SearchBar({ onSearch }) {
+  const [searchTerm, setSearchTerm] = React.useState("");
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+    onSearch(event.target.value);
+  };
+
   return (
     <Search>
       <SearchIconWrapper>
@@ -60,6 +67,8 @@ export default function SearchBar() {
       <StyledInputBase
         placeholder="Rechercher…"
         inputProps={{ "aria-label": "search" }}
+        value={searchTerm}
+        onChange={handleSearch}
       />
     </Search>
   );

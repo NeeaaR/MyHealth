@@ -4,12 +4,17 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function SelectSpecs() {
-  const [age, setAge] = React.useState('');
-
+export default function SelectSpecs({doctors, onSpecChange}) {
+  const [spec, setSpec] = React.useState('');
   const handleChange = (event) => {
-    setAge(event.target.value);
+    const newSpec = event.target.value;
+    setSpec(newSpec);
+    onSpecChange(newSpec);
   };
+
+  const specList = doctors
+    .map(doctor => doctor.speciality)
+    .filter((spec, index, self) => self.indexOf(spec) === index);
 
   return (
     <div>
@@ -18,17 +23,19 @@ export default function SelectSpecs() {
         <Select sx={{ color: "white" }}
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
-          value={age}
+          value={spec}
           onChange={handleChange}
           autoWidth
-          label="Age"
+          label="Spécialisation"
         >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={10}>Dermatologue</MenuItem>
-          <MenuItem value={21}>Cancerologue</MenuItem>
-          <MenuItem value={22}>Dentiste</MenuItem>
+          {specList.map((spec, index) => (
+            <MenuItem key={index} value={spec}>
+              {spec}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </div>

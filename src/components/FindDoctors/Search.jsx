@@ -1,9 +1,10 @@
 import { Divider, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
-import SearchBar from "./SearchBar";
 import SelectSpecs from "./Select";
+import SearchBar from "./SearchBar";
 
-export default function Search() {
+export default function Search({doctors, onSpecChange, onSearch}) {
+
   return (
     <Container
       sx={{
@@ -14,8 +15,8 @@ export default function Search() {
         <Typography sx={{ padding: "20px", fontWeight: 800 }} variant="h2">
           Trouver un médecin
         </Typography>
-        <SearchBar />
-        <SelectSpecs/>
+        <SearchBar onSearch={onSearch} />
+        <SelectSpecs doctors={doctors} onSpecChange={onSpecChange} />
         <Divider sx={{ backgroundColor: "white"}}/>
       </Box>
     </Container>

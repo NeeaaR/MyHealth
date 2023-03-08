@@ -1,44 +1,48 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Links from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setAlert } from '../../actions/alert';
-import { register, register_doctor } from '../../actions/auth';
-import { Link } from 'react-router-dom';
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Links from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setAlert } from "../../actions/alert";
+import { register, register_doctor } from "../../actions/auth";
+import { Link, Navigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
       <Links color="inherit" href="https://mui.com/">
         MyHealth
-      </Links>{' '}
+      </Links>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
 
 const theme = createTheme({
-    palette : {
-        background: {
-            // default: "#001E3C"
-        }
-    }
-}
-);
+  palette: {
+    background: {
+      // default: "#001E3C"
+    },
+  },
+});
 
 const RegisterDoctor = () => {
 
@@ -48,33 +52,67 @@ const RegisterDoctor = () => {
     password: "",
     password2: "",
     first_name: "",
-    last_name : "",
+    last_name: "",
     speciality: "",
     gender: "",
     age: "",
+    zip_code: "",
+    city: "",
+    address: "",
     health_card_number: "",
-  })
+    phone_number: "",
+  });
 
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  const { username, password, email, first_name, last_name, speciality, gender, age, health_card_number } = formData;
+  const {
+    username,
+    password,
+    email,
+    first_name,
+    last_name,
+    speciality,
+    gender,
+    age,
+    zip_code,
+    city,
+    address,
+    health_card_number,
+    phone_number,
+  } = formData;
 
-  const onChange = e => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (password !== formData.password2){
+    if (password !== formData.password2) {
       dispatch(setAlert("Passwords do not match", "danger"));
     } else {
-      dispatch(register_doctor({ username, email, password, first_name, last_name, speciality, gender, age, health_card_number }))
+      dispatch(
+        register_doctor({
+          username,
+          email,
+          password,
+          first_name,
+          last_name,
+          speciality,
+          gender,
+          age,
+          health_card_number,
+          zip_code,
+          city,
+          address,
+          phone_number,
+        })
+      );
     }
-  }
+  };
 
   if (isAuthenticated) {
-    return <Navigate replace to='/'/>
+    return <Navigate replace to="/" />;
   }
 
   return (
@@ -84,12 +122,12 @@ const RegisterDoctor = () => {
         <Box
           sx={{
             marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -201,6 +239,39 @@ const RegisterDoctor = () => {
                   autoComplete="age"
                 />
               </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id="zip"
+                  label="Code postal"
+                  name="zip_code"
+                  onChange={onChange}
+                  autoComplete="zip_code"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id="city"
+                  label="Ville"
+                  name="city"
+                  onChange={onChange}
+                  autoComplete="city"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="address"
+                  label="Adresse"
+                  name="address"
+                  onChange={onChange}
+                  autoComplete="address"
+                />
+              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
@@ -209,12 +280,25 @@ const RegisterDoctor = () => {
                   label="Numéro de Carte Vitale"
                   id="health_card_number"
                   onChange={onChange}
-                  autoComplete="health_card_number"
+                  maxLength="15"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="phone_number"
+                  label="Numéro de téléphone"
+                  id="phone_number"
+                  onChange={onChange}
+                  autoComplete="phone_number"
                 />
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
+                  control={
+                    <Checkbox value="allowExtraEmails" color="primary" />
+                  }
                   label="Je souhaite recevoir des promotions marketing et des mises à jour par e-mail."
                 />
               </Grid>
@@ -240,6 +324,6 @@ const RegisterDoctor = () => {
       </Container>
     </ThemeProvider>
   );
-}
+};
 
 export default RegisterDoctor;

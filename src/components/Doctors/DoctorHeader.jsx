@@ -1,9 +1,12 @@
 import React from "react";
 import { Avatar, Box, Grid, Rating, Typography } from "@mui/material";
 import { Container } from "@mui/system";
-
+import moment from "moment";
+moment.locale("fr"); 
 export default function DoctorHeader({user}) {
   const [value, setValue] = React.useState(2);
+  const formattedDate = moment(user.date).format("DD MMMM YYYY");
+
   return (
     <Container
       sx={{
@@ -57,7 +60,7 @@ export default function DoctorHeader({user}) {
                 letterSpacing: 5,
               }}
             >
-              ENVY
+              {user.last_name}
             </Typography>
           </Box>
         </Grid>
@@ -72,7 +75,7 @@ export default function DoctorHeader({user}) {
               letterSpacing: 3,
             }}
           >
-            Utilisateur depuis le 05/01/2023
+            Utilisateur depuis le {formattedDate}
           </Typography>
         </Grid>
       </Grid>

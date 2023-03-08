@@ -43,12 +43,13 @@ export const addAppointment = formData => async dispatch => {
     };
 
     try {
-        const res = await axios.post("", formData, config);
+        const res = await axios.post("http://localhost:8000/api/appointments/", formData, config);
 
         dispatch({ type: ADD_APPOINTMENT, payload: res.data });
 
         dispatch(setAlert("Appointment Added", "success"));
     } catch (err) {
+        console.log(err)
         dispatch({ type: APPOINTMENT_ERROR, payload: { msg: err.response.statusText, status: err.response.status } }); 
     }
 }    

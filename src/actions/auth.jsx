@@ -26,11 +26,11 @@ export const loadUser = () => async dispatch => {
 };
 
 // Register User
-export const register = ({ username, email, password, first_name, last_name, gender, age, health_card_number }) => async dispatch => {
+export const register = ({ username, email, password, first_name, last_name, gender, age, zip, city, address, health_card_number, phone_number }) => async dispatch => {
   const config = {
     headers: { "Content-Type": "application/json" }
   };
-  const body = JSON.stringify({ username, email, password, first_name, last_name, gender, age, health_card_number });
+  const body = JSON.stringify({ username, email, password, first_name, last_name, gender, age, zip, city, address, health_card_number, phone_number });
 
   try {
     const res = await axios.post("http://localhost:8000/api/patient/register/", body, config);
@@ -68,12 +68,12 @@ export const register = ({ username, email, password, first_name, last_name, gen
 };
 
 // Register Doctor 
-export const register_doctor = ({ username, email, password, first_name, last_name, speciality, gender, age, health_card_number }) => async dispatch => {
+export const register_doctor = ({ username, email, password, first_name, last_name, speciality, gender, age, zip_code, city, address, health_card_number, phone_number }) => async dispatch => {
   const config = {
     headers: { "Content-Type": "application/json" }
   };
 
-  const body = JSON.stringify({ username, email, password, first_name, last_name, speciality, gender, age, health_card_number });
+  const body = JSON.stringify({ username, email, password, first_name, last_name, speciality, gender, age, zip_code, city, address, health_card_number, phone_number });
 
   try {
     const res = await axios.post("http://localhost:8000/api/doctor/register/", body, config);
@@ -84,6 +84,7 @@ export const register_doctor = ({ username, email, password, first_name, last_na
 
     dispatch(loadUser());
   } catch (err) {
+    console.log(err)
     const errors = err.response.data;
 
     if (errors["username"]) {

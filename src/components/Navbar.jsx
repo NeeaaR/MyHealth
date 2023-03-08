@@ -247,7 +247,8 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: "transparent", boxShadow: "none" }}>
+
         <Toolbar>
           <Typography
             variant="h6"

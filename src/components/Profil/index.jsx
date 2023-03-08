@@ -18,12 +18,14 @@ const Profil = () => {
         auth
     } = useSelector(state => state);
 
+
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getUserById(id));
     }, [dispatch, id]);
     const { user } = auth;
-    console.log(user)
+
+
     if (loading || profile === null) {
         return <h1>Loading...</h1>
     }
@@ -34,7 +36,7 @@ const Profil = () => {
                 <UserHeader profile={profile.profile}/>
             </Box>
             <User profile={profile.profile}/>
-            <UserAvailability slots={profile.available_slots}/>
+            <UserAvailability appointments={profile.appointments}/>
         </div>  
     )
 }

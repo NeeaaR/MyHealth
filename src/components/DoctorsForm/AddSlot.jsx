@@ -59,7 +59,7 @@ const AddSlot = ({user}) => {
     const data = {
       date: slot.date.format("YYYY-MM-DD"),
       time: slot.time.format("HH:mm"),
-      doctor: 29
+      doctor: user.id,
     };
     dispatch(addAvailableSlot(data));
     handleClose();

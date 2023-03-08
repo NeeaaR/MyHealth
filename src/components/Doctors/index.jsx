@@ -41,7 +41,14 @@ export default function Doctors() {
 
   if (loading || profile === null) {
     return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
         <CircularProgress />
         <Typography variant="h6" sx={{ ml: 2, color: "white" }}>
           Chargement en cours...
@@ -69,7 +76,18 @@ export default function Doctors() {
         >
           Mes disponibilités
         </Typography>
-        <DayTime slots={profile.available_slots} reservedSlots={appointments} />
+        {profile.available_slots === null ||
+        profile.available_slots.length === 0 ? (
+          <Typography variant="body1" sx={{ color: "white" }}>
+            Le docteur n'a pas encore défini de créneau disponible.
+          </Typography>
+        ) : (
+          <DayTime
+            slots={profile.available_slots}
+            reservedSlots={appointments}
+          />
+        )}
+
         {AddDisponibilities()}
       </Container>
     </div>

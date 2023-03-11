@@ -21,6 +21,10 @@ import Users from "./components/Users";
 import FindDoctors from "./components/FindDoctors/FindDoctors";
 import FindPharmacy from "./components/FindPharmacy/FindPharmacy";
 import Articles from "./components/Articles/Articles";
+import Faq from "./components/Extra/FAQ";
+import CGU from "./components/Extra/CGU";
+import Team from "./components/Extra/Team";
+import Prohome from "./components/PRO/pages/Index";
 
 
 
@@ -54,6 +58,10 @@ return (
         <Route element={<FindDoctors />} path="/find/doctors" />
         <Route element={<FindPharmacy />} path="/find/pharmacy" />
         <Route element={<Articles />} path="/article/:id" />
+        <Route element={<Faq />} path="/faq" />
+        <Route element={<CGU />} path="/cgu" />
+        <Route element={<Team />} path="/team" />
+        <Route element={<Prohome />} path="/pro/" />
         <Route element={<ErrorPage />} path="*" />
       </Routes>
     </Provider>

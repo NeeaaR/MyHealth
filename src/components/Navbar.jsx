@@ -268,7 +268,10 @@ export default function Navbar() {
           </Link>
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>  
+          <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>  
+          <Typography variant="h6" noWrap component="div" sx={{ color: "#fff", marginRight: 2 }}>
+                FAQ
+              </Typography>
             <IconButton
               size="large"
               edge="end"

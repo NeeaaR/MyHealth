@@ -31,10 +31,10 @@ export default function Footer() {
         </Link> */}
         <Typography variant="h6" color="textPrimary" gutterBottom={false}>MyHealth</Typography>
         <Box component="nav" style={footerNav}>
-          <Link href="#" variant="body1" color="textPrimary" style={footerLink}>CGU</Link>
-          <Link href="#" variant="body1" color="textPrimary" style={footerLink}>A propos</Link>
-          <Link href="#" variant="body1" color="textPrimary" style={footerLink}>Prendre Rendez-Vous</Link>
-          <Link href="#" variant="body1" color="textPrimary" style={footerLink}>FAQ</Link>
+          <Link href="/cgu" variant="body1" color="textPrimary" style={footerLink}>CGU</Link>
+          <Link href="/team" variant="body1" color="textPrimary" style={footerLink}>A propos</Link>
+          <Link href="/find/doctors" variant="body1" color="textPrimary" style={footerLink}>Prendre Rendez-Vous</Link>
+          <Link href="/FAQ" variant="body1" color="textPrimary" style={footerLink}>FAQ</Link>
         </Box>
         <Box mb={3}>
           <IconButton color="inherit" aria-label="Facebook">
